@@ -10,7 +10,6 @@ function postResource() {
   }
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
-    ResourceId: "test_2",
     date: "Sat. Sep. 22, 2018",
     location: "UBC Hospital",
     name: "Health Check",
@@ -42,7 +41,7 @@ function getAllResource() {
 
 function getResource() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://5tg521dz44.execute-api.us-east-2.amazonaws.com/dev/realgood/single');
+  xhr.open('GET', 'https://5tg521dz44.execute-api.us-east-2.amazonaws.com/dev/realgood/2576d817-aca3-35aa-35d6-378be03a660f');
   xhr.onreadystatechange = function(event) {
     console.log(event.target.response);
   }
