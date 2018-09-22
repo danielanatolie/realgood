@@ -1,0 +1,3 @@
+/*
+  All of these functions are going to be living in the aws cloud as lambdas
+*/
