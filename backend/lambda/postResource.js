@@ -2,10 +2,11 @@ const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB({region: 'us-east-2', apiVersion: '2012-08-10'});
 
 exports.handler = (event, context, callback) => {
+    const id = guid();
     const params = {
         Item: {
             "ResourceId": {
-                S: event.ResourceId
+                S: id
             },
             "date": {
                 S: event.date
@@ -27,8 +28,19 @@ exports.handler = (event, context, callback) => {
            console.log(err);
            callback(err);
        } else {
-           console.log(data);
-           callback(null, data);
+           console.log(id);
+           callback(null, {
+               "id": id
+           });
        }
     });
 };
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
